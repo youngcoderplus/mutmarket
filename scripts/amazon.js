@@ -80,6 +80,6 @@ products.forEach((product) => {
 });
 
 console.log(productHTML);
-console.log(productHTML);
+
 
 document.querySelector('.js-products-grid').innerHTML = productHTML;
