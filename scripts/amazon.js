@@ -32,6 +32,8 @@
   priceCents: 1899
 } ];*/
 
+import { cart } from '../data/cart.js';
+
 let productHTML = ' ';
 
 products.forEach((product) => {
