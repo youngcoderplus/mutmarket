@@ -97,7 +97,7 @@ products.forEach((product) => {
 document.querySelector('.js-products-grid').innerHTML = productHTML;
 
 
-
+//To update the cart quantity in the top right corner
 function updateCartQuantity(){
   let cartQuantity = 0;
    cart.forEach((cartItem) => {
@@ -116,7 +116,6 @@ document.querySelectorAll('.js-add-to-cart')
     addToCart(productId);
     updateCartQuantity();
    
-  
 
    
   });
