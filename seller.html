@@ -177,9 +177,76 @@
       </div>
     </div>
 
+    <div class="container">
+  <h2>Sell Your Item</h2>
+
+  <!-- Trust banner at the top -->
+  <div style="background: #f9edbe; color: #222; padding: 10px; text-align: center; border: 1px solid #f0c36d; font-weight: bold; margin-bottom: 15px;">
+    ⚠️ This site is safe. No payments are collected here. WhatsApp is only used to communicate your order.
+  </div>
+
+  <form id="sellForm">
+    <label>Item Name</label>
+    <input type="text" id="itemName" required>
+
+    <label>Price</label>
+    <input type="number" id="price" required>
+
+    <label>Description</label>
+    <textarea id="description" placeholder="Describe your item"></textarea>
+
+    <label>Item Image</label>
+    <input type="file" accept="image/*">
+    <small>Image will be sent manually on WhatsApp</small>
+
+    <!-- Submit normally -->
+    <button type="submit">Submit</button>
+  </form>
+
+  <!-- New user-friendly WhatsApp button -->
+  <button id="whatsappBtn" style="margin-top: 10px; width: 100%; padding: 12px; background: #25D366; color: white; font-size: 16px; border: none; border-radius: 5px; cursor: pointer;">
+    Send Details via WhatsApp
+  </button>
+</div>
+
+<script>
+  // Keep form submission as normal (currently just prevents reload)
+  document.getElementById("sellForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+    alert("Your item details are ready. Click the WhatsApp button below to send them.");
+  });
+
+  // WhatsApp button click
+  document.getElementById("whatsappBtn").addEventListener("click", function() {
+    const item = document.getElementById("itemName").value;
+    const price = document.getElementById("price").value;
+    const description = document.getElementById("description").value;
+
+    if (!item || !price) {
+      alert("Please fill at least the Item Name and Price before sending.");
+      return;
+    }
+
+    const message =
+`Hello, I want to sell an item.
+
+Item: ${item}
+Price: ${price}
+Description: ${description}
+
+I will send the image next.`;
+
+    const phoneNumber = "254115955552"; // <-- replace with your number
+    const whatsappURL = "https://wa.me/" + phoneNumber + "?text=" + encodeURIComponent(message);
+
+    // Open WhatsApp in a new tab
+    window.open(whatsappURL, "_blank");
+  });
+</script>
 
 
 
+<!--
   <div class="container">
     <h2>Sell Your Item</h2>
 
@@ -224,7 +291,7 @@ I will send the image next.`;
 
       window.open(whatsappURL, "_blank");
     });
-  </script>
+  </script>-->
 
 
 

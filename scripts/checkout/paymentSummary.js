@@ -1,4 +1,4 @@
-import {cart} from '../../data/cart.js';
+/*import {cart} from '../../data/cart.js';
 import { getProduct } from '../../data/products.js';
 import {getDeliveryOption} from '../../data/deliveryOptions.js';
 import {formatCurrency} from '../utils/money.js';
@@ -81,4 +81,100 @@ function sendOrderToWhatsApp(totalCents) {
     
     // Open WhatsApp
     window.open(whatsappURL, '_blank');
+}*/
+
+import { cart } from '../../data/cart.js';
+import { getProduct } from '../../data/products.js';
+import { getDeliveryOption } from '../../data/deliveryOptions.js';
+import { formatCurrency } from '../utils/money.js';
+
+export function renderPaymentSummary() {
+  let productPriceCents = 0;
+  let shippingPriceCents = 0;
+
+  cart.forEach((cartItem) => {
+    const product = getProduct(cartItem.productId);
+    productPriceCents += product.priceCents * cartItem.quantity;
+
+    const deliveryOption = getDeliveryOption(cartItem.deliveryOptionId);
+    shippingPriceCents += deliveryOption.priceCents;
+  });
+
+  const totalBeforeTaxCents = productPriceCents + shippingPriceCents;
+  const taxCents = 0; // totalBeforeTaxCents * 0.1;
+  const totalCents = totalBeforeTaxCents + taxCents;
+
+  const paymentSummaryHTML = `
+    <div class="payment-summary-title">
+      Order Summary
+    </div>
+
+    <div class="payment-summary-row">
+      <div>Items (${cart.length}):</div>
+      <div class="payment-summary-money">ksh${formatCurrency(productPriceCents)}</div>
+    </div>
+
+    <div class="payment-summary-row">
+      <div>Shipping &amp; handling:</div>
+      <div class="payment-summary-money">ksh${formatCurrency(shippingPriceCents)}</div>
+    </div>
+
+    <div class="payment-summary-row subtotal-row">
+      <div>Total before tax:</div>
+      <div class="payment-summary-money">ksh${formatCurrency(totalBeforeTaxCents)}</div>
+    </div>
+
+    <div class="payment-summary-row">
+      <div>Estimated tax (10%):</div>
+      <div class="payment-summary-money">ksh${formatCurrency(taxCents)}</div>
+    </div>
+
+    <div class="payment-summary-row total-row">
+      <div>Order total:</div>
+      <div class="payment-summary-money">ksh${formatCurrency(totalCents)}</div>
+    </div>
+
+    <!-- Buttons -->
+    <button id="submitOrderBtn" class="button-primary" style="margin-top:10px; width:100%; padding:12px;">
+      Submit Order Details
+    </button>
+
+    <button id="whatsappOrderBtn" class="button-primary" style="margin-top:10px; width:100%; padding:12px; background:#25D366; color:white;">
+      Place Order via WhatsApp
+    </button>
+
+    <!-- Trust Banner -->
+    <div style="background:#f9edbe; color:#222; padding:8px; text-align:center; border:1px solid #f0c36d; font-weight:bold; margin-top:10px;">
+      ⚠️ This site is safe. WhatsApp is only used to send your order. No payments are collected here.
+    </div>
+  `;
+
+  document.querySelector('.js-payment-summary').innerHTML = paymentSummaryHTML;
+
+  // Submit button: show confirmation or save order locally
+  document.getElementById('submitOrderBtn').addEventListener('click', () => {
+    alert("Your order details have been recorded. You can now click 'Place Order via WhatsApp' to send your order.");
+  });
+
+  // WhatsApp button: user-triggered
+  document.getElementById('whatsappOrderBtn').addEventListener('click', () => {
+    sendOrderToWhatsApp(totalCents);
+  });
+}
+
+function sendOrderToWhatsApp(totalCents) {
+  let message = "🛒 *Order Details*\n\n";
+
+  cart.forEach((cartItem) => {
+    const product = getProduct(cartItem.productId);
+    const brandText = cartItem.brand ? ` (${cartItem.brand})` : '';
+    message += `• ${product.name}${brandText} (Qty: ${cartItem.quantity})\n`;
+  });
+
+  message += `\n*Total: ksh${formatCurrency(totalCents)}*`;
+
+  const encodedMessage = encodeURIComponent(message);
+  const whatsappURL = `https://wa.me/254115955552?text=${encodedMessage}`;
+
+  window.open(whatsappURL, '_blank');
 }
