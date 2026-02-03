@@ -41,8 +41,14 @@ export const products = [
   },
   {
     id: "83d4ca15-0f35-48f5-b7a3-1ea210004f2e",
+    di: "83d4ca15-0f35-48f5-b7a3-1ea210004f2e",
     image: "images/products/adults-plain-cotton-tshirt-2-pack-teal.jpg",
     name: "Adults Plain Cotton T-Shirt - 2 Pack",
+    brand:{
+      manc: "ManCity",
+      manu: "ManUnited",
+      liv: "Liverpool"
+    },
     rating: {
       stars: 4.5,
       count: 56
@@ -70,7 +76,7 @@ export const products = [
       "kitchen",
       "appliances"
     ]
-  },
+  }/*,
   {
     id: "3ebe75dc-64d2-4137-8860-1f5a963e534b",
     image: "images/products/6-piece-white-dinner-plate-set.jpg",
@@ -667,5 +673,5 @@ export const products = [
       "apparel",
       "mens"
     ]
-  }
+  }*/
 ];

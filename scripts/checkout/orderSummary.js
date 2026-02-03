@@ -51,9 +51,11 @@ export function renderOrderSummary(){
     `
     <div class="cart-item-container 
         js-cart-item-container-${matchingProduct.id}">
-        <div class="delivery-date">
+        <!-- Delivery date hidden 
+            <div class="delivery-date">
             Delivery date: ${dateString}
         </div>
+        -->
 
         <div class="cart-item-details-grid">
             <img class="product-image"
@@ -63,6 +65,11 @@ export function renderOrderSummary(){
             <div class="product-name">
                 ${matchingProduct.name}
             </div>
+            ${cartItem.brand ? `
+            <div class="product-brand">
+                ${cartItem.brand}
+            </div>
+            ` : ''}
             <div class="product-price">
             ${formatCurrency(matchingProduct.priceCents)}
             </div>
@@ -112,9 +119,7 @@ export function renderOrderSummary(){
                 ${isChecked ? 'checked' : ''}
                 name="${matchingProduct.id}-delivery-option-1">
                 <div>
-                <div class="delivery-option-date">
-                    ${dateString}
-                </div>
+                <!-- Delivery date hidden -->
                 <div class="delivery-option-price">
                     ${priceString} Shipping
                 </div>

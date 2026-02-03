@@ -16,7 +16,7 @@ export function renderPaymentSummary(){
     });
 
     const totalBeforeTaxCents = productPriceCents + shippingPriceCents;
-    const taxCents = totalBeforeTaxCents * 0.1;
+    const taxCents = 0; //totalBeforeTaxCents * 0.1;
     const totalCents = totalBeforeTaxCents + taxCents;
 
     const paymentSummaryHTML = `
@@ -26,27 +26,27 @@ export function renderPaymentSummary(){
 
           <div class="payment-summary-row">
             <div>Items (3):</div>
-            <div class="payment-summary-money">$${formatCurrency(productPriceCents)}</div>
+            <div class="payment-summary-money">ksh${formatCurrency(productPriceCents)}</div>
           </div>
 
           <div class="payment-summary-row">
             <div>Shipping &amp; handling:</div>
-            <div class="payment-summary-money">$${formatCurrency(shippingPriceCents)}</div>
+            <div class="payment-summary-money">ksh${formatCurrency(shippingPriceCents)}</div>
           </div>
 
           <div class="payment-summary-row subtotal-row">
             <div>Total before tax:</div>
-            <div class="payment-summary-money">$${formatCurrency(totalBeforeTaxCents)}</div>
+            <div class="payment-summary-money">ksh${formatCurrency(totalBeforeTaxCents)}</div>
           </div>
 
           <div class="payment-summary-row">
             <div>Estimated tax (10%):</div>
-            <div class="payment-summary-money">$${formatCurrency(taxCents)}</div>
+            <div class="payment-summary-money">ksh${formatCurrency(taxCents)}</div>
           </div>
 
           <div class="payment-summary-row total-row">
             <div>Order total:</div>
-            <div class="payment-summary-money">$${formatCurrency(totalCents)}</div>
+            <div class="payment-summary-money">ksh${formatCurrency(totalCents)}</div>
           </div>
 
           <button class="place-order-button button-primary">
@@ -54,4 +54,31 @@ export function renderPaymentSummary(){
           </button>
     `
     document.querySelector('.js-payment-summary').innerHTML = paymentSummaryHTML;
+
+    document.querySelector('.place-order-button').addEventListener('click', () => {
+        sendOrderToWhatsApp(totalCents);
+    });
+}
+
+function sendOrderToWhatsApp(totalCents) {
+    let message = "🛒 *Order Details*\n\n";
+    
+    // Collect item names and quantities
+    cart.forEach((cartItem) => {
+        const product = getProduct(cartItem.productId);
+        const brandText = cartItem.brand ? ` (${cartItem.brand})` : '';
+        message += `• ${product.name}${brandText} (Qty: ${cartItem.quantity})\n`;
+    });
+    
+    // Add total
+    message += `\n*Total: ksh${formatCurrency(totalCents)}*`;
+    
+    // Encode message for URL
+    const encodedMessage = encodeURIComponent(message);
+    
+    // WhatsApp URL (works for web)
+    const whatsappURL = `https://wa.me/254115955552?text=${encodedMessage}`;
+    
+    // Open WhatsApp
+    window.open(whatsappURL, '_blank');
 }

@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Amazon Project</title>
-
-    <!-- This code is needed for responsive design to work.
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- This code is needed f0r responsive design to work.
       (Responsive design = make the website look good on
       smaller screen sizes like a phone or a tablet). -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,14 +17,14 @@
     <!-- Here are the CSS files for this page. -->
     <link rel="stylesheet" href="styles/shared/general.css">
     <link rel="stylesheet" href="styles/shared/amazon-header.css">
-    <link rel="stylesheet" href="styles/pages/amazon.css">
-  </head>
-  <body>
-    <div class="amazon-header">
+    <link rel="stylesheet" href="styles/pages/orders.css">
+</head>
+<body>
+  <div class="amazon-header">
       <div class="amazon-header-left-section">
         <a href="amazon.html" class="header-link">
           <img class="amazon-logo"
-            src="images/mut.png">
+            src="images/mut1.png">
           <img class="amazon-mobile-logo"
             src="images/amazon-mobile-logo-white.png">
         </a>
@@ -38,7 +39,12 @@
       </div>
 
       <div class="amazon-header-right-section">
-        <a class="orders-link header-link" href="seller.html">
+        <a class="orders-link header-link" href="guide.html">
+          <span class="returns-text">User</span>
+          <span class="orders-text">. Guide</span>
+        </a>
+
+        <a class="orders-link header-link" href="terms.html">
           <span class="returns-text">TERMS</span>
           <span class="orders-text">& Conditions</span>
         </a>
@@ -62,14 +68,22 @@
         </a>
       </div>
     </div>
-    
-    <div class="main">
-      <div class="products-grid js-products-grid">
-        
- 
-      </div>
-    </div>
- 
-<script type="module" src="scripts/amazon.js"></script>    
+    <br>
+
+    <div id="terms" class="container hidden">
+  <h2>Terms & Conditions</h2>
+  <p>Welcome to our student marketplace. To ensure safe and smooth transactions, please follow these rules:</p>
+  <ul>
+    <li>Do <strong>not make any payment</strong> before seeing the item in person.</li>
+    <li>All communication is facilitated by <strong>Alex Mwangi — Your Marketplace Assistant</strong>. He is not selling or buying items himself.</li>
+    <li>When submitting a product as a seller, images are sent via WhatsApp after you contact Alex.</li>
+    <li>Buyers should confirm item details (price, quantity, condition) before agreeing to purchase.</li>
+    <li>Always be honest and respectful in your dealings. Fraudulent activity will be reported.</li>
+    <li>Alex Mwangi only acts as a middleman. He is not responsible for payments or delivery.</li>
+    <li>If you encounter suspicious activity or issues, report them immediately via WhatsApp. <a href="tel:+254115955552">phone number</a></li>
+  </ul>
+  <p>By using this website, you agree to follow these terms and transact responsibly.</p>
+</div>
+
 </body>
 </html>

@@ -3,16 +3,19 @@
   color: white;
   padding-left: 15px;
   padding-right: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 15px;
 
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  height: 60px;
+  z-index: 100;
 }
 
 .amazon-header-left-section {
@@ -27,11 +30,12 @@
 
 .header-link {
   display: inline-block;
-  padding: 6px;
+  padding: 8px 12px;
   border-radius: 2px;
   cursor: pointer;
   text-decoration: none;
   border: 1px solid rgba(0, 0, 0, 0);
+  white-space: nowrap;
 }
 
 .header-link:hover {
@@ -39,8 +43,10 @@
 }
 
 .amazon-logo {
-  width: 100px;
-  margin-top: 5px;
+  width: 180px;
+  margin-top: 8px;
+  height: auto;
+  max-height: 72px;
 }
 
 .amazon-mobile-logo {
@@ -97,10 +103,11 @@
 }
 
 .amazon-header-right-section {
-  width: 180px;
-  flex-shrink: 0;
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 15px;
+  flex-shrink: 0;
 }
 
 .orders-link {

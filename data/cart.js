@@ -18,22 +18,23 @@ function saveToStorage(){
 }
 
 // Adds a product to the cart
-export function addToCart(productId){
+export function addToCart(productId, quantity = 1, brand = null){
   let matchingItem;
 
    cart.forEach( (cartItem) => {
-    if(productId === cartItem.productId){
+    if(productId === cartItem.productId && cartItem.brand === brand){
       matchingItem = cartItem;
     }
    });
 
    if(matchingItem){
-    matchingItem.quantity += 1;
+    matchingItem.quantity += Number(quantity);
    }else{
     cart.push({
     productId: productId,
-    quantity: 1,
-    deliveryOptionId: '1'
+    quantity: Number(quantity),
+    deliveryOptionId: '1',
+    brand: brand
   }); 
    }
 
