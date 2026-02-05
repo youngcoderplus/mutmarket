@@ -10,6 +10,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 15px;
+  flex-wrap: wrap;
 
   position: fixed;
   top: 0;
@@ -67,7 +68,7 @@
 
 .amazon-header-middle-section {
   flex: 1;
-  max-width: 850px;
+  max-width: 850px; /*850*/
   margin-left: 10px;
   margin-right: 10px;
   display: flex;
@@ -105,8 +106,8 @@
 .amazon-header-right-section {
   display: flex;
   justify-content: flex-end;
-  align-items: center;
-  gap: 15px;
+  align-items: start;
+  gap: 18px;
   flex-shrink: 0;
 }
 
