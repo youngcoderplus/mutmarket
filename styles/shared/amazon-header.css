@@ -1,17 +1,17 @@
 .amazon-header {
   background-color: rgb(19, 25, 33);
   color: white;
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: 10px;
+  padding-right: 10px;
   padding-top: 10px;
   padding-bottom: 10px;
   max-width: 100%;
 
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 15px;
-  flex-shrink: 5;
+  justify-content: space-evenly;
+  gap: 10px;
+  flex-shrink: 1;
   flex-wrap: wrap;
 
   position: fixed;
