@@ -50,6 +50,10 @@ products.forEach((product) => {
            ${product.name}
           </div>
 
+          <div class="product-name limit-text-to-2-lines">
+          <a href="${product.decription}">More Info</a>
+          </div>
+
           <div class="product-rating-container">
             <img class="product-rating-stars"
               src="images/ratings/rating-${product.rating.stars * 10}.png">

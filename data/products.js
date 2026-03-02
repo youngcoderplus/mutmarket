@@ -11,6 +11,38 @@ export function getProduct(productId){
 
 export const products = [
   {
+    id: "54e0eccd-8f36-462b-b68a-8182611d9addlp1",
+    image: "images/products/HpElitebook840G5.jpg",
+    name: "Hp Elitebook 840 G5 ",
+    decription: 'description/description1.html',
+    
+    rating: {
+      stars: 5,
+      count: 2197
+    },
+    priceCents: 33000,
+    keywords: [
+      "toaster",
+      "kitchen",
+      "appliances"
+    ]
+  },{
+    id: "54e0eccd-8f36-462b-b68a-8182611d9addlp2",
+    image: "images/products/Yoga11ex360touch.jpg",
+    name: "Yoga 11 EX 360 Touch",
+    decription: 'description/description2.html',
+    
+    rating: {
+      stars: 5,
+      count: 2197
+    },
+    priceCents: 16499,
+    keywords: [
+      "toaster",
+      "kitchen",
+      "appliances"
+    ]
+  },{
     id: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
     image: "images/products/athletic-cotton-socks-6-pairs.jpg",
     name: "Black and Gray Athletic Cotton Socks - 6 Pairs",
@@ -76,7 +108,7 @@ export const products = [
       "kitchen",
       "appliances"
     ]
-  }/*,
+  }, /*,
   {
     id: "3ebe75dc-64d2-4137-8860-1f5a963e534b",
     image: "images/products/6-piece-white-dinner-plate-set.jpg",
